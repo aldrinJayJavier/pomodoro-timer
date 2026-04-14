@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pomodoro">
+  <meta name="theme-color" content="#1a1a2e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Pomodoro Timer</title>
+</head>
+<body class="phase-idle">
+
+  <header>
+    <span class="app-title" id="app-title">Pomodoro</span>
+  </header>
+
+  <main>
+
+    <!-- Phase indicator -->
+    <div class="phase-indicator">
+      <div class="phase-dots" id="phase-dots">
+        <div class="phase-dot" data-index="0"></div>
+        <div class="phase-dot" data-index="1"></div>
+        <div class="phase-dot" data-index="2"></div>
+        <div class="phase-dot" data-index="3"></div>
+      </div>
+      <span class="phase-label" id="phase-label">Ready</span>
+    </div>
+
+    <!-- Timer ring -->
+    <div class="timer-wrap">
+      <svg class="timer-ring" viewBox="0 0 120 120">
+        <circle class="ring-bg"       cx="60" cy="60" r="54"/>
+        <circle class="ring-progress" cx="60" cy="60" r="54"
+          id="ring-progress"
+          stroke-dasharray="339.3"
+          stroke-dashoffset="0"/>
+      </svg>
+      <div class="timer-text" id="timer-text">25:00</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn-control" id="btn-reset" title="Reset">&#x21BA;</button>
+      <button class="btn-control btn-primary" id="btn-start-pause">Start</button>
+      <button class="btn-control" id="btn-skip" title="Skip">&#x23ED;</button>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value" id="stat-today">0</span>
+        <span class="stat-label">Today</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-focus">0m</span>
+        <span class="stat-label">Focus</span>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="timer">Timer</button>
+      <button class="tab-btn" data-tab="stats">Stats</button>
+      <button class="tab-btn" data-tab="settings">Settings</button>
+    </div>
+
+    <div class="tab-panels">
+      <div class="tab-panel active" id="panel-timer"></div>
+
+      <div class="tab-panel" id="panel-stats"></div>
+
+      <div class="tab-panel" id="panel-settings">
+        <div class="settings-group">
+          <label>Work <span class="setting-unit">min</span></label>
+          <div class="setting-row">
+            <button class="btn-adj" data-target="workDuration" data-delta="-1">&#x2212;</button>
+            <input class="setting-value" id="val-workDuration" type="number" min="1" max="120" value="25">
+            <button class="btn-adj" data-target="workDuration" data-delta="1">+</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <label>Short break <span class="setting-unit">min</span></label>
+          <div class="setting-row">
+            <button class="btn-adj" data-target="shortBreakDuration" data-delta="-1">&#x2212;</button>
+            <input class="setting-value" id="val-shortBreakDuration" type="number" min="1" max="60" value="5">
+            <button class="btn-adj" data-target="shortBreakDuration" data-delta="1">+</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <label>Long break <span class="setting-unit">min</span></label>
+          <div class="setting-row">
+            <button class="btn-adj" data-target="longBreakDuration" data-delta="-1">&#x2212;</button>
+            <input class="setting-value" id="val-longBreakDuration" type="number" min="1" max="60" value="15">
+            <button class="btn-adj" data-target="longBreakDuration" data-delta="1">+</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <label>Long break after <span class="setting-unit">sessions</span></label>
+          <div class="setting-row">
+            <button class="btn-adj" data-target="pomodorosBeforeLongBreak" data-delta="-1">&#x2212;</button>
+            <input class="setting-value" id="val-pomodorosBeforeLongBreak" type="number" min="1" max="8" value="4">
+            <button class="btn-adj" data-target="pomodorosBeforeLongBreak" data-delta="1">+</button>
+          </div>
+        </div>
+        <div class="volume-row">
+          <label>Volume</label>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.7">
+        </div>
+        <button class="btn-save" id="btn-save-settings">Save Settings</button>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="notif-banner" id="notif-banner"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

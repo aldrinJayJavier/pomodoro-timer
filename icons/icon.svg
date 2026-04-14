@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#1a1a2e"/>
+  <circle cx="256" cy="272" r="160" fill="none" stroke="#e63946" stroke-width="24"/>
+  <circle cx="256" cy="272" r="120" fill="#16213e"/>
+  <text x="256" y="296" font-family="-apple-system, sans-serif" font-size="96" font-weight="700"
+        fill="#e0e0e0" text-anchor="middle" dominant-baseline="middle">25</text>
+  <rect x="220" y="80" width="72" height="28" rx="8" fill="#52b788"/>
+  <rect x="244" y="60" width="24" height="28" rx="6" fill="#52b788"/>
+</svg>
